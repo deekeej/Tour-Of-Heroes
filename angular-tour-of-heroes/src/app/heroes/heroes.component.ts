@@ -13,17 +13,18 @@ export class HeroesComponent implements OnInit {
 
   selectedHero?: Hero;
 
+  ngOnInit(): void {
+    this.getHeroes();
+  }
+
   constructor(private heroService: HeroService) {}
 
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
   }
 
+  // when you are using observable, you have to use subscribe because Angular is waiting for the input from the backend
   getHeroes(): void {
-    this.heroes = this.heroService.getHeroes();
-  }
-
-  ngOnInit(): void {
-    this.getHeroes();
+    this.heroService.getHeroes().subscribe((heroes) => (this.heroes = heroes));
   }
 }
