@@ -11,6 +11,7 @@ import { HeroService } from '../hero.service';
 })
 export class HeroDetailComponent implements OnInit {
   // import Input class and type @Input before property name to get input from Parent class!
+  // @Input Hero | undefined;
   hero: Hero | undefined;
 
   constructor(
@@ -37,5 +38,11 @@ export class HeroDetailComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  save(): void {
+    if (this.hero) {
+      this.heroService.updateHero(this.hero).subscribe(() => this.goBack());
+    }
   }
 }
