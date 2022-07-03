@@ -1,4 +1,9 @@
 <!-- getting variables from app.component.ts -->
-{{title}}
-<app-heroes></app-heroes>
+<!-- after you create app-routing you can use router-outlet -->
+<h1>{{title}}</h1>
+<nav>
+  <a routerLink="/dashboard">Dashboard</a>
+  <a routerLink="/heroes">Heroes</a>
+</nav>
+<router-outlet></router-outlet>
 <app-messages></app-messages>

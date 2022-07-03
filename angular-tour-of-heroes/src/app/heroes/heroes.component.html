@@ -1,13 +1,13 @@
 <!-- how to get uppercase name -->
 <!-- [(ngModel)] is Angular's two-way data binding syntax. you need to import FormsModule into app.module.ts to work with NgModel -->
-<div *ngIf="selectedHero">
+<!-- <div *ngIf="selectedHero">
     <h2>{{selectedHero.name | uppercase}} Details</h2>
     <div>id: {{selectedHero.id}}</div>
     <div>
       <label for="hero-name">Hero name: </label>
       <input id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name">
     </div>
-  </div>
+  </div> -->
 
 <!-- For loop it finds by itself the property of heroes in the component-->
 <!-- (click) is EventBinding and "onSelect" is method which you have to define in heroes.component.ts -->
@@ -15,12 +15,11 @@
 <h2>My Heroes</h2>
 <ul class="heroes">
   <li *ngFor="let hero of heroes">
-    <button  [class.selected]="hero === selectedHero" type="button" (click)="onSelect(hero)">
-      <span class="badge">{{hero.id}}</span>
-      <span class="name">{{hero.name}}</span>
-    </button>
+    <a routerLink="/detail/{{hero.id}}">
+      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </a>
   </li>
 </ul>
 
 <!-- passing values - parent to child -->
-<app-hero-detail [hero]="selectedHero"></app-hero-detail>
+<!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->
